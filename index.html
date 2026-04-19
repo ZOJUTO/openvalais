@@ -86,13 +86,13 @@ nav.scrolled .lang-trigger { border-color: var(--line); color: var(--charcoal); 
 .lang-btn .flag { font-size: 16px; }
 .lang-btn:hover, .lang-btn.active { background: var(--off-white); color: var(--gold); }
 
-/* HERO - EFECTO PARALLAX DESPLAZABLE */
+/* HERO - EFECTO PARALLAX CON MATTERHORN */
 #hero {
   position: relative; height: 100vh; min-height: 600px;
   display: flex; align-items: center; justify-content: center;
   text-align: center; overflow: hidden;
   background: linear-gradient(rgba(17,17,17,0.4), rgba(17,17,17,0.2)),
-              url('https://images.unsplash.com/photo-1531310197839-ccf54634509e?q=80&w=1920&auto=format&fit=crop') center center / cover no-repeat;
+              url('https://images.unsplash.com/photo-1516592673884-4a382d1124c2?q=80&w=1920&auto=format&fit=crop') center center / cover no-repeat;
   background-attachment: fixed;
 }
 .hero-content { z-index: 2; padding: 0 20px; max-width: 800px; }
@@ -217,6 +217,7 @@ html[lang="ar"] .lang-btn { flex-direction: row-reverse; text-align: right; just
 </nav>
 
 <section id="hero">
+  <div class="hero-bg"></div>
   <div class="hero-content">
     <h1 class="hero-title" data-i18n="hero_title">Bespoke Alpine<br><em>Experiences</em></h1>
     <p class="hero-sub" data-i18n="hero_sub">Exclusive Services Across the Valais</p>
@@ -495,7 +496,7 @@ function setLang(lang) {
       if(dict[lang][key]) el.innerHTML = dict[lang][key];
     });
     document.getElementById('name').placeholder = lang === 'es' ? 'Su Nombre' : lang === 'fr' ? 'Votre Nom' : lang === 'de' ? 'Ihr Name' : lang === 'zh' ? '您的姓名' : lang === 'ru' ? 'Ваше имя' : lang === 'ar' ? 'اسمك' : 'Your Name';
-    document.getElementById('service').placeholder = lang === 'es' ? 'Servicio de Interés' : lang === 'fr' ? 'Service d\'Intérêt' : lang === 'de' ? 'Dienstleistung' : lang === 'zh' ? '感兴趣的服务' : lang === 'ru' ? 'Интересующая услуга' : lang === 'ar' ? 'الخدمة المطلوبة' : 'Service of Interest';
+    document.getElementById('service').placeholder = lang === 'es' ? 'Servicio de Interés' : lang === 'fr' ? 'Service d\'Intérêt' : lang === 'de' ? 'Dienstleistung' : lang === 'zh' ? '感兴趣的服务' : lang === 'ru' ? 'Интересующая услуга' : lang === 'ar' ? 'الخدمة المطلوبة' : 'Service of Interest (e.g. Transfers, Property)';
     document.getElementById('message').placeholder = lang === 'es' ? '¿Cómo podemos ayudarle?' : lang === 'fr' ? 'Comment pouvons-nous vous aider ?' : lang === 'de' ? 'Wie können wir helfen?' : lang === 'zh' ? '我们能帮您什么？' : lang === 'ru' ? 'Как мы можем помочь?' : lang === 'ar' ? 'كيف يمكننا مساعدتك؟' : 'How can we help you?';
   }
 }
