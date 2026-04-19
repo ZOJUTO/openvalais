@@ -86,20 +86,15 @@ nav.scrolled .lang-trigger { border-color: var(--line); color: var(--charcoal); 
 .lang-btn .flag { font-size: 16px; }
 .lang-btn:hover, .lang-btn.active { background: var(--off-white); color: var(--gold); }
 
-/* HERO */
+/* HERO - EFECTO PARALLAX DESPLAZABLE */
 #hero {
   position: relative; height: 100vh; min-height: 600px;
   display: flex; align-items: center; justify-content: center;
-  text-align: center; overflow: hidden;
+  text-align: center;
+  background: linear-gradient(rgba(17,17,17,0.4), rgba(17,17,17,0.2)),
+              url('https://images.unsplash.com/photo-1531310197839-ccf54634509e?q=80&w=1920&auto=format&fit=crop') center center / cover no-repeat;
+  background-attachment: fixed; /* Efecto desplazable (Parallax) */
 }
-.hero-bg {
-  position: absolute; inset: 0;
-  /* Imagen oscura/Premium de chalets/montaña contrastante */
-  background: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.4)),
-              url('https://images.unsplash.com/photo-1518739618037-4d96ab1448b1?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
-  z-index: -1; transform: scale(1.05); animation: heroZoom 25s ease-in-out infinite alternate;
-}
-@keyframes heroZoom { from{transform:scale(1.05)} to{transform:scale(1.12)} }
 .hero-content { z-index: 2; padding: 0 20px; max-width: 800px; }
 .hero-title {
   font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 8vw, 85px);
@@ -119,7 +114,7 @@ nav.scrolled .lang-trigger { border-color: var(--line); color: var(--charcoal); 
   text-decoration: none; border-radius: 2px; transition: all 0.3s;
 }
 .btn-hero.wa { background: #25D366; color: var(--white); border: 1px solid #25D366; }
-.btn-hero.wa:hover { background: #1ebe5d; transform: translateY(-3px); }
+.btn-hero.wa:hover { background: #1ebe5d; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(37,211,102,0.3); }
 .btn-hero.email { background: transparent; color: var(--white); border: 1px solid var(--white); }
 .btn-hero.email:hover { background: var(--white); color: var(--charcoal); transform: translateY(-3px); }
 
@@ -139,9 +134,11 @@ section { padding: 100px 64px; }
 .service-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-bottom: 16px; color: var(--charcoal); }
 .service-desc { font-size: 13px; line-height: 1.8; color: var(--gray); }
 
-/* DESTINOS */
+/* DESTINOS (TODA LA REGIÓN - PARALLAX) */
 .destinations-banner {
-  background: linear-gradient(rgba(17,17,17,0.8), rgba(17,17,17,0.8)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80') center/cover fixed;
+  background: linear-gradient(rgba(17,17,17,0.8), rgba(17,17,17,0.8)), 
+              url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80') center center / cover no-repeat;
+  background-attachment: fixed; /* Efecto desplazable */
   color: var(--white); text-align: center; padding: 120px 20px;
 }
 .destinations-banner h2 { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; margin-bottom: 24px; }
@@ -180,6 +177,10 @@ footer { background: var(--charcoal); color: var(--white); padding: 40px 64px; t
   nav.scrolled { padding: 15px 20px; }
   .nav-links { display: none; }
   section { padding: 80px 20px; }
+  
+  /* Desactivar Parallax en móvil por rendimiento y compatibilidad iOS */
+  #hero, .destinations-banner { background-attachment: scroll; }
+  
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-title { font-size: 42px; }
   .wa-float { bottom: 20px; right: 20px; }
@@ -203,7 +204,7 @@ html[lang="ar"] .lang-btn { flex-direction: row-reverse; text-align: right; just
     </ul>
     <div class="lang-switcher" id="langSwitcher">
       <button class="lang-trigger" onclick="toggleLangMenu()" aria-label="Language Selector">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
       </button>
       <div class="lang-dropdown" id="langDropdown">
         <button class="lang-btn active" onclick="setLang('en')"><span class="flag">🇬🇧</span> English</button>
@@ -219,7 +220,6 @@ html[lang="ar"] .lang-btn { flex-direction: row-reverse; text-align: right; just
 </nav>
 
 <section id="hero">
-  <div class="hero-bg"></div>
   <div class="hero-content">
     <h1 class="hero-title" data-i18n="hero_title">Bespoke Alpine<br><em>Experiences</em></h1>
     <p class="hero-sub" data-i18n="hero_sub">Exclusive Services Across the Valais</p>
@@ -328,7 +328,7 @@ html[lang="ar"] .lang-btn { flex-direction: row-reverse; text-align: right; just
         <input type="text" id="name" class="form-input" placeholder="Your Name" required>
       </div>
       <div class="form-group">
-        <input type="text" id="service" class="form-input" placeholder="Service of Interest" required>
+        <input type="text" id="service" class="form-input" placeholder="Service of Interest (e.g. Transfers, Property)" required>
       </div>
       <div class="form-group">
         <input type="text" id="message" class="form-input" placeholder="How can we help you?" required>
@@ -498,7 +498,7 @@ function setLang(lang) {
       if(dict[lang][key]) el.innerHTML = dict[lang][key];
     });
     document.getElementById('name').placeholder = lang === 'es' ? 'Su Nombre' : lang === 'fr' ? 'Votre Nom' : lang === 'de' ? 'Ihr Name' : lang === 'zh' ? '您的姓名' : lang === 'ru' ? 'Ваше имя' : lang === 'ar' ? 'اسمك' : 'Your Name';
-    document.getElementById('service').placeholder = lang === 'es' ? 'Servicio de Interés' : lang === 'fr' ? 'Service d\'Intérêt' : lang === 'de' ? 'Dienstleistung' : lang === 'zh' ? '感兴趣的服务' : lang === 'ru' ? 'Интересующая услуга' : lang === 'ar' ? 'الخدمة المطلوبة' : 'Service of Interest';
+    document.getElementById('service').placeholder = lang === 'es' ? 'Servicio de Interés' : lang === 'fr' ? 'Service d\'Intérêt' : lang === 'de' ? 'Dienstleistung' : lang === 'zh' ? '感兴趣的服务' : lang === 'ru' ? 'Интересующая услуга' : lang === 'ar' ? 'الخدمة المطلوبة' : 'Service of Interest (e.g. Transfers, Property)';
     document.getElementById('message').placeholder = lang === 'es' ? '¿Cómo podemos ayudarle?' : lang === 'fr' ? 'Comment pouvons-nous vous aider ?' : lang === 'de' ? 'Wie können wir helfen?' : lang === 'zh' ? '我们能帮您什么？' : lang === 'ru' ? 'Как мы можем помочь?' : lang === 'ar' ? 'كيف يمكننا مساعدتك؟' : 'How can we help you?';
   }
 }
