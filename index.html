@@ -94,8 +94,9 @@ nav.scrolled .lang-trigger { border-color: var(--line); color: var(--charcoal); 
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: linear-gradient(rgba(17,17,17,0.4), rgba(17,17,17,0.2)),
-              url('https://images.unsplash.com/photo-1531310197839-ccf54634509e?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+  /* Imagen oscura/Premium de chalets/montaña contrastante */
+  background: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.4)),
+              url('https://images.unsplash.com/photo-1518739618037-4d96ab1448b1?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
   z-index: -1; transform: scale(1.05); animation: heroZoom 25s ease-in-out infinite alternate;
 }
 @keyframes heroZoom { from{transform:scale(1.05)} to{transform:scale(1.12)} }
@@ -130,25 +131,25 @@ section { padding: 100px 64px; }
 .section-title { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--charcoal); line-height: 1.1; }
 .section-title em { color: var(--gold); font-style: italic; }
 
-/* SERVICIOS UNIFICADOS */
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+/* SERVICIOS UNIFICADOS (8 CAJAS) */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .service-card { background: var(--white); padding: 50px 40px; transition: background 0.3s; text-align: center; }
 .service-card:hover { background: var(--off-white); }
 .service-icon { font-size: 32px; margin-bottom: 20px; display: block; color: var(--charcoal); }
-.service-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 16px; color: var(--charcoal); }
+.service-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-bottom: 16px; color: var(--charcoal); }
 .service-desc { font-size: 13px; line-height: 1.8; color: var(--gray); }
 
-/* DESTINOS (TODA LA REGIÓN) */
+/* DESTINOS */
 .destinations-banner {
   background: linear-gradient(rgba(17,17,17,0.8), rgba(17,17,17,0.8)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80') center/cover fixed;
   color: var(--white); text-align: center; padding: 120px 20px;
 }
 .destinations-banner h2 { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; margin-bottom: 24px; }
 .destinations-banner p { font-size: 16px; font-weight: 300; max-width: 700px; margin: 0 auto; line-height: 1.8; letter-spacing: 0.05em; color: rgba(255,255,255,0.8); }
-.resort-tags { margin-top: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-.resort-tags span { border: 1px solid var(--gold); padding: 8px 20px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); }
+.resort-tags { margin-top: 40px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 900px; margin-inline: auto; }
+.resort-tags span { border: 1px solid var(--gold); padding: 8px 18px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); }
 
-/* CONTACTO SIMPLE */
+/* CONTACTO */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1000px; margin: 0 auto; }
 .contact-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 32px; margin-bottom: 20px; }
 .contact-info p { font-size: 14px; color: var(--gray); margin-bottom: 30px; line-height: 1.8; }
@@ -183,6 +184,11 @@ footer { background: var(--charcoal); color: var(--white); padding: 40px 64px; t
   .hero-title { font-size: 42px; }
   .wa-float { bottom: 20px; right: 20px; }
 }
+
+/* RTL ARABIC */
+html[lang="ar"] body { direction: rtl; }
+html[lang="ar"] .lang-dropdown { right: auto; left: 0; }
+html[lang="ar"] .lang-btn { flex-direction: row-reverse; text-align: right; justify-content: space-between; }
 </style>
 </head>
 <body>
@@ -204,6 +210,9 @@ footer { background: var(--charcoal); color: var(--white); padding: 40px 64px; t
         <button class="lang-btn" onclick="setLang('es')"><span class="flag">🇪🇸</span> Español</button>
         <button class="lang-btn" onclick="setLang('fr')"><span class="flag">🇫🇷</span> Français</button>
         <button class="lang-btn" onclick="setLang('de')"><span class="flag">🇩🇪</span> Deutsch</button>
+        <button class="lang-btn" onclick="setLang('zh')"><span class="flag">🇨🇳</span> 中文</button>
+        <button class="lang-btn" onclick="setLang('ru')"><span class="flag">🇷🇺</span> Русский</button>
+        <button class="lang-btn" onclick="setLang('ar')"><span class="flag">🇸🇦</span> العربية</button>
       </div>
     </div>
   </div>
@@ -239,6 +248,11 @@ footer { background: var(--charcoal); color: var(--white); padding: 40px 64px; t
       <p class="service-desc" data-i18n="s1_desc">Executive travel from airports directly to any Valais resort in our premium fleet.</p>
     </div>
     <div class="service-card">
+      <span class="service-icon">🚁</span>
+      <h3 class="service-name" data-i18n="s8_name">Aviation</h3>
+      <p class="service-desc" data-i18n="s8_desc">Private helicopter transfers, scenic flights, and exclusive heli-skiing access.</p>
+    </div>
+    <div class="service-card">
       <span class="service-icon">⛷️</span>
       <h3 class="service-name" data-i18n="s2_name">Winter</h3>
       <p class="service-desc" data-i18n="s2_desc">Private instructors, VIP ski passes, and guided tours on the best slopes.</p>
@@ -252,6 +266,11 @@ footer { background: var(--charcoal); color: var(--white); padding: 40px 64px; t
       <span class="service-icon">🍷</span>
       <h3 class="service-name" data-i18n="s4_name">Terroir</h3>
       <p class="service-desc" data-i18n="s4_desc">Private wine tasting and vineyard tours in the historic heart of Sion.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🍽️</span>
+      <h3 class="service-name" data-i18n="s7_name">Gastronomy</h3>
+      <p class="service-desc" data-i18n="s7_desc">Private chefs, tailored catering, and exclusive reservations at elite venues.</p>
     </div>
     <div class="service-card">
       <span class="service-icon">🗝️</span>
@@ -274,8 +293,12 @@ footer { background: var(--charcoal); color: var(--white); padding: 40px 64px; t
     <span>Zermatt</span>
     <span>Verbier</span>
     <span>Crans-Montana</span>
+    <span>Nendaz</span>
     <span>Saas-Fee</span>
     <span>Grächen</span>
+    <span>Leukerbad</span>
+    <span>Champéry</span>
+    <span>Aletsch Arena</span>
     <span>Sion</span>
   </div>
 </section>
@@ -305,7 +328,7 @@ footer { background: var(--charcoal); color: var(--white); padding: 40px 64px; t
         <input type="text" id="name" class="form-input" placeholder="Your Name" required>
       </div>
       <div class="form-group">
-        <input type="text" id="service" class="form-input" placeholder="Service of Interest (e.g. Transfers, Property)" required>
+        <input type="text" id="service" class="form-input" placeholder="Service of Interest" required>
       </div>
       <div class="form-group">
         <input type="text" id="message" class="form-input" placeholder="How can we help you?" required>
@@ -347,9 +370,11 @@ const dict = {
     btn_wa: "WhatsApp Us", btn_email: "Email Us",
     srv_label: "Expertise", srv_title: "Tailored <em>Services</em>",
     s1_name: "Transfers", s1_desc: "Executive travel from airports directly to any Valais resort in our premium fleet.",
+    s8_name: "Aviation", s8_desc: "Private helicopter transfers, scenic flights, and exclusive heli-skiing access.",
     s2_name: "Winter", s2_desc: "Private instructors, VIP ski passes, and guided tours on the best slopes.",
     s3_name: "Summer", s3_desc: "Curated hiking, mountain biking, and exclusive nature experiences.",
     s4_name: "Terroir", s4_desc: "Private wine tasting and vineyard tours in the historic heart of Sion.",
+    s7_name: "Gastronomy", s7_desc: "Private chefs, tailored catering, and exclusive reservations at elite venues.",
     s5_name: "Concierge", s5_desc: "Complete vacation planning, restaurant bookings, and daily assistance.",
     s6_name: "Property", s6_desc: "Year-round management, maintenance, and preparation of your Alpine residence.",
     dest_label: "Our Region", dest_title: "Every Resort in <em>Valais</em>", dest_desc: "We do not limit our expertise. Open Valais operates across the entire canton, delivering our premium mobility, concierge, and property services wherever your Alpine home or destination may be.",
@@ -362,9 +387,11 @@ const dict = {
     btn_wa: "Contactar WhatsApp", btn_email: "Enviar Email",
     srv_label: "Especialidad", srv_title: "Servicios <em>Personalizados</em>",
     s1_name: "Traslados", s1_desc: "Viajes ejecutivos desde aeropuertos directamente a cualquier resort en nuestra flota premium.",
+    s8_name: "Aviación", s8_desc: "Traslados privados en helicóptero, vuelos panorámicos y acceso a heli-esquí.",
     s2_name: "Invierno", s2_desc: "Instructores privados, pases VIP y tours guiados en las mejores pistas.",
     s3_name: "Verano", s3_desc: "Senderismo, ciclismo de montaña y experiencias exclusivas en la naturaleza.",
     s4_name: "Terruño", s4_desc: "Cata de vinos privada y recorridos por viñedos en el corazón histórico de Sion.",
+    s7_name: "Gastronomía", s7_desc: "Chefs privados, catering personalizado y reservas en lugares de élite.",
     s5_name: "Concierge", s5_desc: "Planificación completa de vacaciones, reservas de restaurantes y asistencia diaria.",
     s6_name: "Propiedades", s6_desc: "Gestión, mantenimiento y preparación de su residencia alpina durante todo el año.",
     dest_label: "Nuestra Región", dest_title: "Todos los Resorts en <em>Valais</em>", dest_desc: "No limitamos nuestra experiencia. Open Valais opera en todo el cantón, ofreciendo servicios premium de movilidad, concierge y propiedades dondequiera que esté su destino alpino.",
@@ -377,13 +404,15 @@ const dict = {
     btn_wa: "WhatsApp", btn_email: "Email",
     srv_label: "Expertise", srv_title: "Services <em>Personnalisés</em>",
     s1_name: "Transferts", s1_desc: "Voyages exécutifs depuis les aéroports directement vers n'importe quelle station.",
+    s8_name: "Aviation", s8_desc: "Transferts en hélicoptère privé, vols panoramiques et héliski exclusif.",
     s2_name: "Hiver", s2_desc: "Moniteurs privés, forfaits VIP et visites guidées sur les meilleures pistes.",
     s3_name: "Été", s3_desc: "Randonnée, VTT et expériences exclusives en pleine nature.",
     s4_name: "Terroir", s4_desc: "Dégustation de vins privée et visites de vignobles au cœur de Sion.",
+    s7_name: "Gastronomie", s7_desc: "Chefs privés, traiteur sur mesure et réservations dans des lieux d'élite.",
     s5_name: "Concierge", s5_desc: "Planification complète de vacances, réservations de restaurants et assistance.",
     s6_name: "Propriétés", s6_desc: "Gestion, entretien et préparation de votre résidence alpine toute l'année.",
     dest_label: "Notre Région", dest_title: "Toutes les Stations du <em>Valais</em>", dest_desc: "Open Valais opère dans tout le canton, offrant des services premium de mobilité, de conciergerie et de propriété où que se trouve votre destination.",
-    contact_label: "Connexion", contact_title: "Commencez votre <em>Séjour</em>", contact_desc: "Contactez-nous via WhatsApp pour une communication instantanée, ou utilisez le formulaire pour des demandes détaillées.",
+    contact_label: "Connexion", contact_title: "Commencez votre <em>Séjour</em>", contact_desc: "Contactez-nous via WhatsApp pour une communication instantanée, ou utilisez le formulaire.",
     c_wa: "WhatsApp:", c_email: "Email:", c_base: "Siège:", btn_submit: "Envoyer"
   },
   de: {
@@ -392,45 +421,93 @@ const dict = {
     btn_wa: "WhatsApp", btn_email: "E-Mail",
     srv_label: "Expertise", srv_title: "Maßgeschneiderte <em>Services</em>",
     s1_name: "Transfers", s1_desc: "Fahrten von Flughäfen direkt zu jedem Walliser Resort in unserer Premium-Flotte.",
+    s8_name: "Luftfahrt", s8_desc: "Private Hubschraubertransfers, Rundflüge und exklusives Heliskiing.",
     s2_name: "Winter", s2_desc: "Privatlehrer, VIP-Skipässe und geführte Touren auf den besten Pisten.",
     s3_name: "Sommer", s3_desc: "Wandern, Mountainbiken und exklusive Naturerlebnisse.",
     s4_name: "Terroir", s4_desc: "Private Weinprobe und Weinbergsführungen im Herzen von Sion.",
+    s7_name: "Gastronomie", s7_desc: "Privatköche, maßgeschneidertes Catering und Reservierungen in Elite-Locations.",
     s5_name: "Concierge", s5_desc: "Komplette Urlaubsplanung, Restaurantbuchungen und tägliche Betreuung.",
     s6_name: "Immobilien", s6_desc: "Ganzjährige Verwaltung, Wartung und Vorbereitung Ihrer Alpenresidenz.",
     dest_label: "Unsere Region", dest_title: "Alle Resorts im <em>Wallis</em>", dest_desc: "Open Valais ist im gesamten Kanton tätig und bietet Premium-Mobilität, Concierge- und Immobilienservices, wo immer sich Ihr Ziel befindet.",
-    contact_label: "Verbinden", contact_title: "Starten Sie Ihr <em>Erlebnis</em>", contact_desc: "Kontaktieren Sie uns per WhatsApp für sofortige Kommunikation oder nutzen Sie das Formular für detaillierte Anfragen.",
+    contact_label: "Verbinden", contact_title: "Starten Sie Ihr <em>Erlebnis</em>", contact_desc: "Kontaktieren Sie uns per WhatsApp für sofortige Kommunikation.",
     c_wa: "WhatsApp:", c_email: "E-Mail:", c_base: "Basis:", btn_submit: "Anfrage Senden"
+  },
+  zh: {
+    nav_services: "服务", nav_dest: "地区", nav_contact: "联系",
+    hero_title: "定制高山<br><em>体验</em>", hero_sub: "整个瓦莱州的专属服务",
+    btn_wa: "WhatsApp 联系我们", btn_email: "发送电子邮件",
+    srv_label: "专业知识", srv_title: "量身定制的 <em>服务</em>",
+    s1_name: "接送", s1_desc: "从机场直接前往任何瓦莱度假胜地的高级车队服务。",
+    s8_name: "航空", s8_desc: "私人直升机接送、观光飞行和独家直升机滑雪。",
+    s2_name: "冬季", s2_desc: "私人教练、VIP 滑雪通行证和最佳雪道导游。",
+    s3_name: "夏季", s3_desc: "精心策划的徒步旅行、山地自行车和独特的自然体验。",
+    s4_name: "风土", s4_desc: "在锡永历史中心的私人品酒和葡萄园之旅。",
+    s7_name: "美食", s7_desc: "私人厨师、定制餐饮和精英场所的独家预订。",
+    s5_name: "礼宾", s5_desc: "完整的假期规划、餐厅预订和日常协助。",
+    s6_name: "房地产", s6_desc: "全年管理、维护和准备您的阿尔卑斯住宅。",
+    dest_label: "我们的地区", dest_title: "瓦莱州的<em>所有度假村</em>", dest_desc: "Open Valais 在整个州运营，无论您的目的地在哪里，都提供高级交通、礼宾和房地产服务。",
+    contact_label: "连接", contact_title: "开始您的 <em>安排</em>", contact_desc: "通过 WhatsApp 联系我们进行即时沟通，或使用表格进行详细查询。",
+    c_wa: "WhatsApp:", c_email: "电子邮件:", c_base: "基地:", btn_submit: "发送查询"
+  },
+  ru: {
+    nav_services: "Услуги", nav_dest: "Регион", nav_contact: "Контакты",
+    hero_title: "Индивидуальные<br><em>Альпийские впечатления</em>", hero_sub: "Эксклюзивные услуги по всему Вале",
+    btn_wa: "Написать в WhatsApp", btn_email: "Написать на Email",
+    srv_label: "Экспертиза", srv_title: "Индивидуальные <em>Услуги</em>",
+    s1_name: "Трансферы", s1_desc: "Представительские поездки из аэропортов напрямую на любой курорт.",
+    s8_name: "Авиация", s8_desc: "Частные трансферы на вертолете, обзорные полеты и хели-ски.",
+    s2_name: "Зима", s2_desc: "Частные инструкторы, VIP ски-пассы и экскурсии по лучшим склонам.",
+    s3_name: "Лето", s3_desc: "Пешие прогулки, катание на горных велосипедах и эксклюзивный отдых.",
+    s4_name: "Терруар", s4_desc: "Частные дегустации вин и туры по виноградникам в Сьоне.",
+    s7_name: "Гастрономия", s7_desc: "Частные шеф-повара, индивидуальный кейтеринг и бронирование элитных заведений.",
+    s5_name: "Консьерж", s5_desc: "Полное планирование отпуска, бронирование ресторанов и помощь.",
+    s6_name: "Недвижимость", s6_desc: "Круглогодичное управление, обслуживание и подготовка вашей резиденции.",
+    dest_label: "Наш Регион", dest_title: "Каждый Курорт в <em>Вале</em>", dest_desc: "Open Valais работает по всему кантону, предоставляя услуги премиум-класса, консьержа и недвижимости, где бы ни находился ваш дом.",
+    contact_label: "Связь", contact_title: "Начните свое <em>Путешествие</em>", contact_desc: "Свяжитесь с нами через WhatsApp для мгновенного общения или используйте форму.",
+    c_wa: "WhatsApp:", c_email: "Email:", c_base: "База:", btn_submit: "Отправить запрос"
+  },
+  ar: {
+    nav_services: "خدمات", nav_dest: "منطقة", nav_contact: "اتصال",
+    hero_title: "تجارب جبال الألب<br><em>المصممة خصيصًا</em>", hero_sub: "خدمات حصرية في جميع أنحاء فاليه",
+    btn_wa: "تواصل عبر WhatsApp", btn_email: "أرسل بريد إلكتروني",
+    srv_label: "خبرة", srv_title: "خدمات <em>مخصصة</em>",
+    s1_name: "نقل", s1_desc: "سفر تنفيذي من المطارات مباشرة إلى أي منتجع.",
+    s8_name: "طيران", s8_desc: "نقل خاص بطائرات الهليكوبتر ورحلات ذات مناظر خلابة وتزلج حصري.",
+    s2_name: "شتاء", s2_desc: "مدربون خاصون، وتذاكر تزلج لكبار الشخصيات، وجولات إرشادية.",
+    s3_name: "صيف", s3_desc: "المشي لمسافات طويلة وركوب الدراجات الجبلية وتجارب طبيعية حصرية.",
+    s4_name: "نبيذ", s4_desc: "تذوق نبيذ خاص وجولات في مزارع الكروم في قلب سيون.",
+    s7_name: "فن الطهو", s7_desc: "طهاة خاصون ومطاعم مخصصة وحجوزات في أماكن النخبة.",
+    s5_name: "كونسيرج", s5_desc: "تخطيط كامل للإجازات وحجوزات المطاعم والمساعدة اليومية.",
+    s6_name: "عقارات", s6_desc: "إدارة وصيانة وتجهيز مسكنك في جبال الألب على مدار العام.",
+    dest_label: "منطقتنا", dest_title: "كل منتجع في <em>فاليه</em>", dest_desc: "تعمل أوبن فاليه في جميع أنحاء الكانتون ، وتقدم خدمات التنقل المتميزة والكونسيرج والعقارات أينما كانت وجهتك.",
+    contact_label: "الاتصال", contact_title: "ابدأ <em>ترتيباتك</em>", contact_desc: "اتصل بنا عبر الواتساب للتواصل الفوري ، أو استخدم النموذج للاستفسارات.",
+    c_wa: "WhatsApp:", c_email: "Email:", c_base: "قاعدة:", btn_submit: "إرسال الاستفسار"
   }
 };
 
 function setLang(lang) {
-  // Update UI buttons
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   const btn = document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`);
   if(btn) btn.classList.add('active');
   document.documentElement.setAttribute('lang', lang);
   document.getElementById('langSwitcher').classList.remove('open');
 
-  // Replace Text
   if(dict[lang]) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if(dict[lang][key]) el.innerHTML = dict[lang][key];
     });
-    // Replace placeholders
-    document.getElementById('name').placeholder = lang === 'es' ? 'Su Nombre' : lang === 'fr' ? 'Votre Nom' : lang === 'de' ? 'Ihr Name' : 'Your Name';
-    document.getElementById('service').placeholder = lang === 'es' ? 'Servicio de Interés' : lang === 'fr' ? 'Service d\'Intérêt' : lang === 'de' ? 'Dienstleistung' : 'Service of Interest';
-    document.getElementById('message').placeholder = lang === 'es' ? '¿Cómo podemos ayudarle?' : lang === 'fr' ? 'Comment pouvons-nous vous aider ?' : lang === 'de' ? 'Wie können wir helfen?' : 'How can we help you?';
+    document.getElementById('name').placeholder = lang === 'es' ? 'Su Nombre' : lang === 'fr' ? 'Votre Nom' : lang === 'de' ? 'Ihr Name' : lang === 'zh' ? '您的姓名' : lang === 'ru' ? 'Ваше имя' : lang === 'ar' ? 'اسمك' : 'Your Name';
+    document.getElementById('service').placeholder = lang === 'es' ? 'Servicio de Interés' : lang === 'fr' ? 'Service d\'Intérêt' : lang === 'de' ? 'Dienstleistung' : lang === 'zh' ? '感兴趣的服务' : lang === 'ru' ? 'Интересующая услуга' : lang === 'ar' ? 'الخدمة المطلوبة' : 'Service of Interest';
+    document.getElementById('message').placeholder = lang === 'es' ? '¿Cómo podemos ayudarle?' : lang === 'fr' ? 'Comment pouvons-nous vous aider ?' : lang === 'de' ? 'Wie können wir helfen?' : lang === 'zh' ? '我们能帮您什么？' : lang === 'ru' ? 'Как мы можем помочь?' : lang === 'ar' ? 'كيف يمكننا مساعدتك؟' : 'How can we help you?';
   }
 }
 
-// Auto-detect on load
 document.addEventListener("DOMContentLoaded", () => {
   const userLang = (navigator.language || navigator.userLanguage).split('-')[0];
-  setLang(['en','es','fr','de'].includes(userLang) ? userLang : 'en');
+  setLang(['en','es','fr','de','zh','ru','ar'].includes(userLang) ? userLang : 'en');
 });
 
-// FORM SUBMIT
 function sendForm(e) {
   e.preventDefault();
   const n = document.getElementById('name').value;
