@@ -90,11 +90,10 @@ nav.scrolled .lang-trigger { border-color: var(--line); color: var(--charcoal); 
 #hero {
   position: relative; height: 100vh; min-height: 600px;
   display: flex; align-items: center; justify-content: center;
-  text-align: center;
+  text-align: center; overflow: hidden;
   background: linear-gradient(rgba(17,17,17,0.4), rgba(17,17,17,0.2)),
-        url('https://images.unsplash.com/photo-1531310197839-ccf54634509e?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;      
-    url('https://images.unsplash.com/photo-1531310197839-ccf54634509e?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;url('https://images.unsplash.com/photo-1531310197839-ccf54634509e?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;url('https://images.unsplash.com/photo-1531310197839-ccf54634509e?q=80&w=1920&auto=format&fit=crop') center center / cover no-repeat;
-  background-attachment: fixed; /* Efecto desplazable (Parallax) */
+              url('https://images.unsplash.com/photo-1531310197839-ccf54634509e?q=80&w=1920&auto=format&fit=crop') center center / cover no-repeat;
+  background-attachment: fixed;
 }
 .hero-content { z-index: 2; padding: 0 20px; max-width: 800px; }
 .hero-title {
@@ -139,7 +138,7 @@ section { padding: 100px 64px; }
 .destinations-banner {
   background: linear-gradient(rgba(17,17,17,0.8), rgba(17,17,17,0.8)), 
               url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80') center center / cover no-repeat;
-  background-attachment: fixed; /* Efecto desplazable */
+  background-attachment: fixed;
   color: var(--white); text-align: center; padding: 120px 20px;
 }
 .destinations-banner h2 { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; margin-bottom: 24px; }
@@ -178,10 +177,7 @@ footer { background: var(--charcoal); color: var(--white); padding: 40px 64px; t
   nav.scrolled { padding: 15px 20px; }
   .nav-links { display: none; }
   section { padding: 80px 20px; }
-  
-  /* Desactivar Parallax en móvil por rendimiento y compatibilidad iOS */
   #hero, .destinations-banner { background-attachment: scroll; }
-  
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-title { font-size: 42px; }
   .wa-float { bottom: 20px; right: 20px; }
@@ -205,7 +201,7 @@ html[lang="ar"] .lang-btn { flex-direction: row-reverse; text-align: right; just
     </ul>
     <div class="lang-switcher" id="langSwitcher">
       <button class="lang-trigger" onclick="toggleLangMenu()" aria-label="Language Selector">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
       </button>
       <div class="lang-dropdown" id="langDropdown">
         <button class="lang-btn active" onclick="setLang('en')"><span class="flag">🇬🇧</span> English</button>
@@ -329,7 +325,7 @@ html[lang="ar"] .lang-btn { flex-direction: row-reverse; text-align: right; just
         <input type="text" id="name" class="form-input" placeholder="Your Name" required>
       </div>
       <div class="form-group">
-        <input type="text" id="service" class="form-input" placeholder="Service of Interest (e.g. Transfers, Property)" required>
+        <input type="text" id="service" class="form-input" placeholder="Service of Interest" required>
       </div>
       <div class="form-group">
         <input type="text" id="message" class="form-input" placeholder="How can we help you?" required>
@@ -499,7 +495,7 @@ function setLang(lang) {
       if(dict[lang][key]) el.innerHTML = dict[lang][key];
     });
     document.getElementById('name').placeholder = lang === 'es' ? 'Su Nombre' : lang === 'fr' ? 'Votre Nom' : lang === 'de' ? 'Ihr Name' : lang === 'zh' ? '您的姓名' : lang === 'ru' ? 'Ваше имя' : lang === 'ar' ? 'اسمك' : 'Your Name';
-    document.getElementById('service').placeholder = lang === 'es' ? 'Servicio de Interés' : lang === 'fr' ? 'Service d\'Intérêt' : lang === 'de' ? 'Dienstleistung' : lang === 'zh' ? '感兴趣的服务' : lang === 'ru' ? 'Интересующая услуга' : lang === 'ar' ? 'الخدمة المطلوبة' : 'Service of Interest (e.g. Transfers, Property)';
+    document.getElementById('service').placeholder = lang === 'es' ? 'Servicio de Interés' : lang === 'fr' ? 'Service d\'Intérêt' : lang === 'de' ? 'Dienstleistung' : lang === 'zh' ? '感兴趣的服务' : lang === 'ru' ? 'Интересующая услуга' : lang === 'ar' ? 'الخدمة المطلوبة' : 'Service of Interest';
     document.getElementById('message').placeholder = lang === 'es' ? '¿Cómo podemos ayudarle?' : lang === 'fr' ? 'Comment pouvons-nous vous aider ?' : lang === 'de' ? 'Wie können wir helfen?' : lang === 'zh' ? '我们能帮您什么？' : lang === 'ru' ? 'Как мы можем помочь?' : lang === 'ar' ? 'كيف يمكننا مساعدتك؟' : 'How can we help you?';
   }
 }
